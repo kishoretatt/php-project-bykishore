@@ -10,7 +10,7 @@ pipeline {
         stage('Build docker image'){
             steps{
                 script{
-                    sh 'docker build -t kishore1208/5sepimage:v1 .'
+                    sh 'docker build -t kishore1208/2febimage:v1 .'
                     sh 'docker images'
                 }
             }
@@ -28,12 +28,12 @@ pipeline {
             steps {
                script {
                    def dockerrm = 'sudo docker rm -f My-first-containe2211 || true'
-                    def dockerCmd = 'sudo docker run -itd --name My-first-containe2211 -p 8083:80 akshu20791/5sepimage:v1'
+                    def dockerCmd = 'sudo docker run -itd --name My-first-containe2211 -p 8083:80 kishore1208/2febimage:v1'
                     sshagent(['sshkeypair']) {
                         //chnage the private ip in below code
                         // sh "docker run -itd --name My-first-containe2111 -p 8083:80 kishore1208/2febimg:v1"
-                         sh "ssh -o StrictHostKeyChecking=no ubuntu@172.31.31.99 ${dockerrm}"
-                         sh "ssh -o StrictHostKeyChecking=no ubuntu@172.31.31.99 ${dockerCmd}"
+                         sh "ssh -o StrictHostKeyChecking=no ubuntu@172.31.26.75 ${dockerrm}"
+                         sh "ssh -o StrictHostKeyChecking=no ubuntu@172.31.26.75 ${dockerCmd}"
                     }
                 }
             }
